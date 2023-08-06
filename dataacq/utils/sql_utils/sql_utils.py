@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2.extras import execute_values
 
 from dataacq.utils.error import NoDataWriteError
 
@@ -51,7 +52,14 @@ class SQLUtils:
             port=self.port
         )
         cursor = conn.cursor()
-        cursor.execute(query)
+        if qtype == 'write':
+            execute_values(
+                cursor,
+                query, 
+                data
+            )
+        else:
+            cursor.execute(query)
         
         if qtype == 'read':
             response = cursor.fetchall()

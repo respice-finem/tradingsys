@@ -1,3 +1,4 @@
+
 from dataacq.utils.sql_utils.sql_utils import SQLUtils
 from dataacq.utils.scraper.apiScraper import APIScraper
 from dataacq.utils.s3.s3_utils import S3Utils
@@ -5,17 +6,10 @@ from dataacq.sec_master.const import BUCKET_NAME,\
     SQL_CREDENTIALS, EODHD_SEARCH_API,\
     EODHD_API_KEY
 
-
-class Fundamental:
-
-    """
-    TODO: We have to split what we receive into multiple insert queries.
-
-    This should be two multiple write functions here.
-    """
+class OHLC:
 
     def __init__(self):
-        """Instantiate Fundamental Scraper."""
+        """Instantiate OHLC scraper."""
         self.s3_client = S3Utils(
             BUCKET_NAME
         )
@@ -23,4 +17,6 @@ class Fundamental:
             **SQL_CREDENTIALS
         )
 
-    def 
+    def process(self):
+        """Process the information."""
+        pass
