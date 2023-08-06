@@ -65,3 +65,6 @@ venv.bak/
 # Env files
 *.sh
 *.Ps1
+
+# Output files
+sec_master.json
