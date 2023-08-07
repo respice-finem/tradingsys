@@ -1,10 +1,10 @@
 """This module contains parse function for our workflow."""
 
-from dataacq.sec_master.sec_master import SecurityMaster
+from dataacq.dataacq.sec_master.sec_master import SecurityMaster
 
 def process():
     sm = SecurityMaster()
-    sm.process()
+    _ = sm.process()
 
 if __name__ == '__main__':
     process()

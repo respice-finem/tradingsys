@@ -1,8 +1,8 @@
 """This module contains the API scraper."""
 import requests
-from dataacq.utils.s3.s3_utils import S3Utils
+from dataacq.dataacq.utils.s3.s3_utils import S3Utils
 import logging
-from dataacq.utils.error import BucketNameUnavailableError
+from dataacq.dataacq.utils.error import BucketNameUnavailableError
 
 class APIScraper:
 

@@ -2,8 +2,8 @@ import boto3
 import os
 import io
 
-from dataacq.sec_master.const import S3_ENV_VARS
-from dataacq.utils.error import EnvironmentVariableMissingError
+from dataacq.dataacq.sec_master.const import S3_ENV_VARS
+from dataacq.dataacq.utils.error import EnvironmentVariableMissingError
 
 class S3Utils:
 

@@ -3,13 +3,13 @@ import json
 import time
 import logging
 
-from dataacq.utils.sql_utils.sql_utils import SQLUtils
-from dataacq.utils.scraper.apiScraper import APIScraper
-from dataacq.utils.s3.s3_utils import S3Utils
-from dataacq.sec_master.const import BUCKET_NAME,\
+from dataacq.dataacq.utils.sql_utils.sql_utils import SQLUtils
+from dataacq.dataacq.utils.scraper.apiScraper import APIScraper
+from dataacq.dataacq.utils.s3.s3_utils import S3Utils
+from dataacq.dataacq.sec_master.const import BUCKET_NAME,\
     SEC_MASTER_FILE_NAME, SEC_MASTER_EXCH_MAP,\
     SQL_CREDENTIALS, EODHD_SEARCH_API,\
-    EODHD_API_KEY
+    EODHD_API_KEY, SEC_MASTER_ENRICHED_FILE_NAME
 
 class SecurityMaster:
 
@@ -28,6 +28,14 @@ class SecurityMaster:
         self.sql_client = SQLUtils(
             **SQL_CREDENTIALS
         )
+
+    def get_file_content(
+        self
+    ):
+        """Get file content."""
+        return self.s3_client.read(
+            SEC_MASTER_FILE_NAME
+        )['Body'].read()
 
     def enrich(
         self,
@@ -90,8 +98,8 @@ class SecurityMaster:
                     counter += 1
                 except:
                     continue
-        with open('sec_master.json', 'w') as f:
-            f.write(json.dumps(security_master_dict))
+        # with open('backup/sec_master.json', 'w') as f: # TODO: REFACTOR TO STORE IN S3 Instead
+        #     f.write(json.dumps(security_master_dict))
         return security_master_dict
     
     def process(
@@ -100,11 +108,10 @@ class SecurityMaster:
         """
         Process file and write to DB.
         """
-        response_content = self.s3_client.read(
-            SEC_MASTER_FILE_NAME
-        )['Body'].read()
+        response_content = self.get_file_content()
         security_master_dict = self.full_enrich(response_content)
-        # security_master_dict = json.load(open('sec_master.json'))
+        print(security_master_dict)
+        # security_master_dict = json.load(open('backup/sec_master.json'))
         query = '''
         INSERT INTO sec_master.master ("isin", "ticker", "exchange", "fullName", "country", "sec_type")
         VALUES %s
@@ -112,6 +119,7 @@ class SecurityMaster:
         ("ticker", "exchange", "fullName", "country", "sec_type")
         = ("excluded"."ticker", "excluded"."exchange", "excluded"."fullName", "excluded"."country", "excluded"."sec_type");
         '''
+        # Problems by data provider (Will remove this to ensure that we have no conflict)
         dedupe = ['US72815G1085', 'US94987B1052', 'US4642886208', 'US30040W1080', 
                   'NL0010556684', 'US00162Q1067', 'US42722X1063', 'US65249B1098', 'BE0974358906', 'US8334451098']
         data = [(
@@ -123,3 +131,4 @@ class SecurityMaster:
             v['securityType']
             ) for _,v in security_master_dict.items() if v['ISIN'] is not None and v['ISIN'] not in dedupe]
         _ = self.sql_client.query(query, data, 'write')
+        return data

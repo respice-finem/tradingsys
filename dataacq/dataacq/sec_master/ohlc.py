@@ -1,7 +1,7 @@
 
-from dataacq.utils.sql_utils.sql_utils import SQLUtils
-from dataacq.utils.scraper.apiScraper import APIScraper
-from dataacq.utils.s3.s3_utils import S3Utils
+from dataacq.dataacq.utils.sql_utils.sql_utils import SQLUtils
+from dataacq.dataacq.utils.scraper.apiScraper import APIScraper
+from dataacq.dataacq.utils.s3.s3_utils import S3Utils
 from dataacq.sec_master.const import BUCKET_NAME,\
     SQL_CREDENTIALS, EODHD_SEARCH_API,\
     EODHD_API_KEY

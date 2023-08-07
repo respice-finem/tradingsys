@@ -7,6 +7,7 @@ BUCKET_NAME = 'tradingsys'
 SEC_MASTER_URL = 'https://files.catnmsplan.com/symbol-master/FINRACATReportableEquitySecurities_EOD.txt'
 TODAY = date.today().strftime('%Y-%m-%d')
 SEC_MASTER_FILE_NAME = f'dataacq/sec_master/security_master_{TODAY}.txt'
+SEC_MASTER_ENRICHED_FILE_NAME = f'dataacq/sec_master/security_master_enriched_{TODAY}.json'
 SEC_MASTER_EXCH_MAP ={
     'A': 'NYSE American',
     'N': 'NYSE',

@@ -1,7 +1,7 @@
 import logging
 
-from dataacq.utils.scraper.apiScraper import APIScraper
-from dataacq.sec_master.const import SEC_MASTER_URL,\
+from dataacq.dataacq.utils.scraper.apiScraper import APIScraper
+from dataacq.dataacq.sec_master.const import SEC_MASTER_URL,\
     SEC_MASTER_FILE_NAME, BUCKET_NAME
 
 

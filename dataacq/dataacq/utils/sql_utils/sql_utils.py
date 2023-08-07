@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2.extras import execute_values
 
-from dataacq.utils.error import NoDataWriteError
+from dataacq.dataacq.utils.error import NoDataWriteError
 
 class SQLUtils:
 
