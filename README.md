@@ -17,10 +17,9 @@ In a trading system, we would need some way of storing our market data to be use
     - [x] Write scraper class for generic web scraping function
     - [x] Write main function to parse the data that we need
     - [x] Unit testing for our tools
+    - [ ] Setup Airflow
     - [ ] Setup Docker Image
-    - [ ] Setup Orchestration Workflow
-    - [ ] Setup Lambda function
-    - [ ] Setup logging for docker images
+    - [ ] Setup ECS
     - [ ] Monitor workflow run
 - [ ] Setup pipeline to obtain and store EOD OHLC data
     - [ ] Setup SQL Schema and Table
@@ -39,7 +38,8 @@ In a trading system, we would need some way of storing our market data to be use
 2. Docker
 3. AWS
     - AWS Cloudwatch
-    - AWS Lambda
+    - AWS ECS
+    - AWS Fargate
     - AWS S3
     - AWS RDS
 
