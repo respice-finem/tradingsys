@@ -17,6 +17,16 @@ class OHLC:
             **SQL_CREDENTIALS
         )
 
+    def get_tickers(self):
+        """Read from master table."""
+        read_query = '''
+        SELECT * FROM sec_master.master
+        AS m
+        WHERE m.sec_type = 'Common Stock'
+        
+        '''
+        return
+
     def process(self):
         """Process the information."""
         pass
