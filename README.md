@@ -22,14 +22,13 @@ In a trading system, we would need some way of storing our market data to be use
     - [ ] Setup ECS
     - [ ] Monitor workflow run
 - [ ] Setup pipeline to obtain and store EOD OHLC data
-    - [ ] Setup SQL Schema and Table
-    - [ ] Write scraper class to parse the data we need
-    - [ ] Backfill data to N years
+    - [x] Setup SQL Schema and Table
+    - [x] Write scraper class to parse the data we need
+    - [x] Backfill data to N years
     - [ ] Unit testing for our tools
+    - [ ] Setup Airflow
     - [ ] Setup Docker Image
-    - [ ] Setup Orchestration Workflow
-    - [ ] Setup Lambda function
-    - [ ] Setup logging for docker images
+    - [ ] Setup ECS
     - [ ] Monitor workflow run
 - [ ] Setup QA and logging system for our market data system
 
