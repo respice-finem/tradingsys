@@ -25,7 +25,7 @@ In a trading system, we would need some way of storing our market data to be use
     - [x] Setup SQL Schema and Table
     - [x] Write scraper class to parse the data we need
     - [x] Backfill data to N years
-    - [ ] Unit testing for our tools
+    - [x] Unit testing for our tools
     - [ ] Setup Airflow
     - [ ] Setup Docker Image
     - [ ] Setup ECS
