@@ -119,7 +119,7 @@ class OHLC:
 # print(ohlc_obj.process(
 #     "2023-08-10",
 #     "2023-08-11"
-# ))
+# )[:5])
 # print(ohlc_obj.get_data(
 #     "dummy",
 #     "MSFT.US",
